@@ -13,7 +13,6 @@ function preload() {
 	game.load.image('background','assets/tests/debug-grid-1920x1920.png');
 	game.load.image('tiles', 'assets/3863.png');
 	//very important that the width and height be correct otherwise animations will not look right.
-	game.load.spritesheet('dude', 'assets/sprites/characters/newguy.png', 30, 32);
 	game.load.spritesheet('dude', 'assets/sprite.png', 24, 32);
 }
 
@@ -80,9 +79,9 @@ function update() {
 	{
 		if(spaceKey.isDown)
 		{
-			speed = 500;
-		}else{
 			speed = 300;
+		}else{
+			speed = 200;
 		}
 		player.body.moveLeft(speed);
 		player.animations.play('left');
@@ -92,9 +91,9 @@ function update() {
 	{
 		if(spaceKey.isDown)
 		{
-			speed = 500;
-		}else{
 			speed = 300;
+		}else{
+			speed = 200;
 		}
 		player.body.moveRight(speed);
 		player.animations.play('right');
@@ -104,9 +103,9 @@ function update() {
 	{
 		if(spaceKey.isDown)
 		{
-			speed = 500;
-		}else{
 			speed = 300;
+		}else{
+			speed = 200;
 		}
 		player.body.moveUp(speed);
 		player.animations.play('up');
@@ -116,9 +115,9 @@ function update() {
 	{
 		if(spaceKey.isDown)
 		{
-			speed = 500;
-		}else{
 			speed = 300;
+		}else{
+			speed = 200;
 		}
 		player.body.moveDown(speed);
 		player.animations.play('down');
