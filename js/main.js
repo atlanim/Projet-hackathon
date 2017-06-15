@@ -11,16 +11,50 @@ var spaceKey;
 
 function preload() {
 	game.load.image('background','assets/tests/debug-grid-1920x1920.png');
+	game.load.image('tiles', 'assets/3863.png');
 	//very important that the width and height be correct otherwise animations will not look right.
 	game.load.spritesheet('dude', 'assets/sprites/characters/newguy.png', 30, 32);
 }
 
 function create() {
+	var data = '';
+	var cnt = 0;
+    for (var y = 0; y < 128; y++)
+    {
+        for (var x = 0; x < 128; x++)
+        {
+            data += "1";//game.rnd.between(0, 20).toString();
+
+            if (x < 127)
+            {
+                data += ',';
+            }
+        }
+
+        if (y < 127)
+        {
+            data += "\n";
+        }
+    }
+
+    //console.log(data);
+    //  Add data to the cache
+    game.cache.addTilemap('tilemap', null, data, Phaser.Tilemap.CSV);
+
+    //  Create our map (the 16x16 is the tile size)
+    map = game.add.tilemap('tilemap', 16, 16);
+
+    //  'tiles' = cache image key, 16x16 = tile size
+    map.addTilesetImage('tiles', 'tiles', 17, 17, 1);
+
+    layer = map.createLayer(0);
+
+    //  Scroll it
+    layer.resizeWorld();
+
 	spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 	//set up the background and the player
-	game.add.sprite(0, 0, 'background');
-	game.world.setBounds(0, 0, 1920, 1920);
 	game.physics.startSystem(Phaser.Physics.P2JS);
 	//setting the player in center for fun
 	player = game.add.sprite(game.world.centerX, game.world.centerY, 'dude');
@@ -37,7 +71,7 @@ function create() {
 }
 
 function update() {
-	//have to always reset the player's velocity otherwise when you move him he'll keep going
+	// have to always reset the player's velocity otherwise when you move him he'll keep going
 	player.body.setZeroVelocity();
 
 
@@ -103,5 +137,4 @@ function update() {
 
 
 	}
-
 }
