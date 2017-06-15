@@ -8,36 +8,31 @@ var cursors;
 var direction = "down";
 var speed;
 var spaceKey;
+var data = '';
+var data_bat = '';
 
 function preload() {
 	game.load.image('background','assets/tests/debug-grid-1920x1920.png');
 	game.load.image('tiles', 'assets/3863.png');
+	game.load.image('tiles_batiment', 'assets/tile set batiment.png');
 	//very important that the width and height be correct otherwise animations will not look right.
 	game.load.spritesheet('dude', 'assets/sprite.png', 24, 32);
 }
 
+function readfile(filename) {
+    var txtFile = new XMLHttpRequest();
+    txtFile.open("GET", filename, false);
+    var txt = '';
+    txtFile.onreadystatechange = function() {
+        txt = txtFile.responseText;
+    };
+    txtFile.send();
+    return txt;
+}
+
 function create() {
-	var data = '';
-	var cnt = 0;
-    for (var y = 0; y < 128; y++)
-    {
-        for (var x = 0; x < 128; x++)
-        {
-            data += "1";//game.rnd.between(0, 20).toString();
-
-            if (x < 127)
-            {
-                data += ',';
-            }
-        }
-
-        if (y < 127)
-        {
-            data += "\n";
-        }
-    }
-
-    //console.log(data);
+	data = readfile('assets/map_sol.csv');
+	data_bat = readfile('assets/map_bat.csv');
     //  Add data to the cache
     game.cache.addTilemap('tilemap', null, data, Phaser.Tilemap.CSV);
 
@@ -47,10 +42,17 @@ function create() {
     //  'tiles' = cache image key, 16x16 = tile size
     map.addTilesetImage('tiles', 'tiles', 17, 17, 1);
 
-    layer = map.createLayer(0);
+    map.createLayer(0).resizeWorld();
 
-    //  Scroll it
-    layer.resizeWorld();
+	game.cache.addTilemap('tilemap_bat', null, data_bat, Phaser.Tilemap.CSV);
+
+    //  Create our map (the 16x16 is the tile size)
+    map_bat = game.add.tilemap('tilemap_bat', 16, 16);
+
+    //  'tiles' = cache image key, 16x16 = tile size
+    map_bat.addTilesetImage('tiles_batiment', 'tiles_batiment', 17, 17, 1);
+
+	map_bat.createLayer(0).resizeWorld();
 
 	spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
