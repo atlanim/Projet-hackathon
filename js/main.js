@@ -14,6 +14,7 @@ function preload() {
 	game.load.image('tiles', 'assets/3863.png');
 	//very important that the width and height be correct otherwise animations will not look right.
 	game.load.spritesheet('dude', 'assets/sprites/characters/newguy.png', 30, 32);
+	game.load.spritesheet('dude', 'assets/sprite.png', 24, 32);
 }
 
 function create() {
