@@ -22,6 +22,9 @@ var Game = function(game){
 Game.prototype = {
 preload: function(){
     this.game.load.image('background', 'assets/tests/debug-grid-1920x1920.png');
+    this.game.load.image('pnj1', 'assets/sprites/characters/adam.png');
+    this.game.load.image('pnj2', 'assets/sprites/characters/Ashley.png');
+    this.game.load.image('pnj3', 'assets/sprites/characters/Matt.png');
     this.game.load.image('tiles', 'assets/3863.png');
     this.game.load.image('tiles_batiment', 'assets/tile set batiment.png');
     //very important that the width and height be correct otherwise animations will not look right.
@@ -47,9 +50,6 @@ create: function() {
 
 
     this.game.cache.addTilemap('tilemap_bat', null, data_bat, Phaser.Tilemap.CSV);
-    this.player = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'dude');
-
-
     //  Create our map (the 16x16 is the tile size)
     map_bat = this.game.add.tilemap('tilemap_bat', 16, 16);
 
@@ -57,6 +57,14 @@ create: function() {
     map_bat.addTilesetImage('tiles_batiment', 'tiles_batiment', 17, 17, 1);
 
     map_bat.createLayer(0).resizeWorld();
+    
+    this.game.add.image(260, 265, 'pnj1').scale.setTo(0.75,0.75);
+    this.game.add.image(200, 405, 'pnj2').scale.setTo(0.75,0.75);
+    this.game.add.image(715, 265, 'pnj3').scale.setTo(0.75,0.75);
+    this.player = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'dude');
+
+
+
     this.music = this.game.add.audio('boden');
 
     this.music.play();
