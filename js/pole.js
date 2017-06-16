@@ -16,6 +16,8 @@ pole.prototype = {
     preload: function(){
         this.game.load.image('background','assets/tests/debug-grid-1920x1920.png');
         this.game.load.image('tiles', 'assets/3863.png');
+        this.game.load.image('dialog', 'assets/dialogPoleEmploi.png');
+        this.game.load.image('pnj1', 'assets/sprites/characters/Jack.png');
         this.game.load.image('tiles_batiment', 'assets/tile set batiment.png');
         this.game.load.image('maison', 'assets/indoor.png');
         this.game.load.image('pole', 'assets/pole.png');
@@ -49,6 +51,7 @@ pole.prototype = {
         this.game.physics.p2.enable(this.player);
         //player.anchor.setTo(0.5, 0.5);
         this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
+        this.game.add.image(360, 240, 'pnj1').scale.setTo(0.75,0.75);
 
         //animations
         this.player.animations.add('down', [0, 1, 2], 10, true);
@@ -103,9 +106,8 @@ pole.prototype = {
         this.p_x = this.player.position.x / 17;
         this.p_y = this.player.position.y / 17;
 
-
-        console.log(this.p_x);
-        console.log(this.p_y);
+        if (this.p_x > 20 && this.p_y > 17)
+            this.game.add.image(150, 40,'dialog');
         /*if (this.p_x < 14 && this.p_y > 16.5 && this.room == 0)
             this.game.state.start("Game");
         if (this.p_y > 28.5 && this.p_y < 28.7 && this.p_x > 26.2 && this.p_x < 26.7 && this.room == 1)// 26.2 et 26.7

@@ -3,12 +3,8 @@
  */
 var intro = function(game) {
     var spaceKey;
-}
+};
 
-// sleep time expects milliseconds
-function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-}
 
 intro.prototype = {
     preload: function () {
