@@ -11,7 +11,7 @@ intro.prototype = {
         this.game.load.image('text', 'assets/Debut.png');
     },
     create: function () {
-        this.game.add.image(0, 0, 'text').scale.setTo(0.75,0.75);
+        this.game.add.image(0, 200, 'text').scale.setTo(0.75,0.75);
         this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
     update: function() {
