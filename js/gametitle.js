@@ -23,7 +23,7 @@ gameTitle.prototype = {
         this.time.events.add(2500, this.change, this);
     },
     change: function() {
-        this.game.state.start('Indoor');
+        this.game.state.start('intro');
     }
 }
 

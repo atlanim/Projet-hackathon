@@ -8,12 +8,14 @@
 	<script type="text/javascript" src="js/gametitle.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/indoor.js"></script>
+	<script type="text/javascript" src="js/intro.js"></script>
 	<script>
         (function() {
             var game = new Phaser.Game(800, 600, Phaser.AUTO,"game");
             game.state.add("GameTitle",gameTitle);
             game.state.add("Game", Game);
-            game.state.add("Indoor", indoor)
+            game.state.add("Indoor", indoor);
+            game.state.add("intro", intro);
             game.state.start("GameTitle");
         })();
 	</script>
