@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="js/indoor.js"></script>
 	<script>
         (function() {
-            var game = new Phaser.Game(800, 600, Phaser.CANVAS, "game");
+            var game = new Phaser.Game(800, 600, Phaser.AUTO,"game");
             game.state.add("GameTitle",gameTitle);
             game.state.add("Game", Game);
             game.state.add("Indoor", indoor)
