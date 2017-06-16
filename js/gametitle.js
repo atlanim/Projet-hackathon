@@ -20,6 +20,7 @@ gameTitle.prototype = {
         logo.filters = [filter];
 
         this.game.add.tween(filter).to( { sizeX: 100, sizeY: 100 }, 5000, "Quad.easeInOut", true, 0, -1, true);
+        this.playTheGame();
     },
     playTheGame: function () {
         this.game.state.start("Indoor");
