@@ -57,7 +57,7 @@ create: function() {
     map_bat.addTilesetImage('tiles_batiment', 'tiles_batiment', 17, 17, 1);
 
     map_bat.createLayer(0).resizeWorld();
-    
+
     this.game.add.image(260, 265, 'pnj1').scale.setTo(0.75,0.75);
     this.game.add.image(200, 405, 'pnj2').scale.setTo(0.75,0.75);
     this.game.add.image(715, 265, 'pnj3').scale.setTo(0.75,0.75);

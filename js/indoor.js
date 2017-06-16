@@ -15,6 +15,8 @@ var indoor = function(game){
 indoor.prototype = {
     preload: function(){
         this.game.load.image('background','assets/tests/debug-grid-1920x1920.png');
+        this.game.load.image('pnj1', 'assets/sprites/characters/Kara.png');
+        this.game.load.image('dialog', 'assets/dialogMaison.png');
         this.game.load.image('tiles', 'assets/3863.png');
         this.game.load.image('tiles_batiment', 'assets/tile set batiment.png');
         this.game.load.image('maison', 'assets/indoor.png');
@@ -37,7 +39,7 @@ indoor.prototype = {
         map_maison.createLayer(0).resizeWorld();
 
 
-
+        this.game.add.image(260, 240, 'pnj1').scale.setTo(0.75,0.75);
 
         this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -106,7 +108,8 @@ indoor.prototype = {
             this.game.state.start("Game");
         if (this.p_y > 28.5 && this.p_y < 28.7 && this.p_x > 26.2 && this.p_x < 26.7 && this.room == 1)// 26.2 et 26.7
             create();
-
+        if (this.p_x < 19 && this.p_y < 16.5 && this.room == 0)
+            this.game.add.image(185, 110, 'dialog');
         if (this.room == 0)
             this.move_maison();
     },
