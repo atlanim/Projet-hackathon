@@ -95,6 +95,15 @@ update: function() {
     // have to always reset the player's velocity otherwise when you move him he'll keep going
     this.player.body.setZeroVelocity();
 
+
+      this.p_x = this.player.position.x / 17;
+    this.p_y = this.player.position.y / 17;
+
+    if (this.p_x > 37 && this.p_x < 39 && this.p_y < 17 && this.p_y > 16)
+    {
+        this.game.state.start("Pole");
+    }
+    
     if (this.player.body.y > 451 && this.player.body.x > 425 && this.player.body.y < 485 && this.player.body.x < 485)// 26.2 et 26.7
     {
         this.game.state.start("Indoor");
